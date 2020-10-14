@@ -67,3 +67,20 @@
     flex-direction: row;
     align-items: stretch;
 }
+
+.message {
+    display: none;
+    border: 1px solid;
+    border-radius: 4px;
+    padding: 0.5em 1em;
+}
+
+.message-error{
+    border-color: crimson;
+    background-color: lightpink;
+}
+
+.message-info {
+    border-color: blue;
+    background-color: lightblue;
+}

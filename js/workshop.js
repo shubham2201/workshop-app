@@ -31,12 +31,32 @@
                 </li>`
     };
 
+
+    function displayMessage( message, theme ) {
+        const messageArea = document.querySelector('#fetch-message');
+        messageArea.innerHTML = message;
+        messageArea.className = `message message-${theme}`;
+        messageArea.style.display = 'block';
+    }
+
+    function hideMessage () {
+        document.querySelector('#fetch-message').style.display = 'none';
+    }
+
     function addWorkshops( workshops ) {
         workshops.forEach ( workshop => addWorkshop ( workshop ));
     }
 
     function init() {
-        fetchWorkshops().then(worshops => addWorkshops(worshops));
+        displayMessage('Loading Workshop', 'info');
+        fetchWorkshops()
+        .then(worshops => {
+            addWorkshops(worshops);
+            hideMessage();
+        })
+        .catch(error => {
+            displayMessage( error,  'error');
+        });
     }
 
     init();
